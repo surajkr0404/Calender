@@ -258,22 +258,54 @@ string Mahina[13]={ "Invalid","January","February","March","April","May","June",
 int main()
 {
     long days,month,year,j,n;
+    string months;
 calender cal;
-cout<<"       \n\n  Enter your choice "<<endl;
+choice:
+cout<<"       \n\n  Enter your choice either 1 or 2 "<<endl;
 
 cout<<"   "; cin>>n;
 getch();
-system("cls");
+
 
 if(n==1)
 {
 repeat_days:
-cout<<"    Enter the date of a calender:"<<endl<<endl;
+    system("cls");
+cout<<" \n\n   Enter the date of a calender:"<<endl<<endl;
 cout<<"      ";cin>>days;
 if(days>=1&&days<=31)
 {  repeat_Month:
 cout<<"\n \n   Enter the month of a calender:"<<endl<<endl;
-cout<<"      ";   cin>>month;
+cout<<"      ";   cin>>months;
+
+   stringstream geek(months);
+   geek>>month;
+
+   if(months=="January"   || months=="Jan" || months=="january"  || months=="jan"  || months=="JANUARY")
+    month=1;
+   if(months=="February"  || months=="Feb" || months=="february" || months=="feb"  || months=="FEBRUARY")
+    month=2;
+   if(months=="March"     || months=="Mar" || months=="march"    || months=="mar"  || months=="MARCH")
+    month=3;
+    if(months=="April"    || months=="Apr" || months=="april"    || months=="apr"  || months=="APRIL")
+    month=4;
+    if(months=="May"      || months=="may" || months=="MAY"      || months=="may"  || months=="MAY")
+    month=5;
+    if(months=="June"     || months=="Jun" || months=="june"     || months=="jun"  || months=="JUNE")
+    month=6;
+    if(months=="July"     || months=="Jul" || months=="july"     || months=="jul"  || months=="JULY")
+    month=7;
+    if(months=="August"   || months=="Aug" || months=="august"   || months=="aug"  || months=="AUGUST")
+    month=8;
+    if(months=="September"|| months=="Sep" || months=="september"|| months=="jan"  || months=="SEPTEMBER")
+    month=9;
+    if(months=="October"  || months=="Oct" || months=="october"  || months=="oct"  || months=="OCTOBER")
+    month=10;
+    if(months=="November" || months=="Nov" || months=="november" || months=="nov"  || months=="NOVEMBER")
+    month=11;
+    if(months=="December" || months=="Dec" || months=="december" || months=="dec"  || months=="DECEMBER")
+    month=12;
+
 if(month>=1&&month<=12)
     {
       repeat_year:
@@ -285,6 +317,7 @@ cout<<"      ";  cin>>year;
           goto repeat_Month;
            }
 cout<<endl<<endl;
+cout<<"you have entered ---------------->    "<<days<<" / "<<month<<" / "<<year<<endl<<endl;
 cal.calculation(days,month,year);
 }
 else
@@ -313,10 +346,10 @@ getch();
 
            }
 }
-if(n==2)
-{
-    cout<<"Enter Year of a calender"<<endl;
-    cin>>year;
+else if(n==2)
+{ system("cls");
+    cout<<"\n Enter Year of a calender"<<endl;
+   cout<<"  "; cin>>year;
     cout<<endl;
     for(j=1;j<=12;j++)
            {
@@ -328,7 +361,10 @@ if(n==2)
             getch();
 
            }
-}
+} else {
+        cout<<setw(22)<<" Invalid Entry"<<endl;
+        cout<<setw(24)<<"Try Again"<<endl<<endl;
+         goto choice;  }
 
     return 0;
 }
